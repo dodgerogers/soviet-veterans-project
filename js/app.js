@@ -112,7 +112,7 @@ App.IndexRoute = Ember.Route.extend({
 App.PostWarClimateController = Ember.ObjectController.extend({
 	history: function(){
     	return this.get('stories').filterBy("category", "jews-in-russia");
-	}.property("story.@each.category"),
+	}.property(),
 	worldWar2: function(){
 		var events = [];
 		var solomon = this.get("veteran");
@@ -122,10 +122,10 @@ App.PostWarClimateController = Ember.ObjectController.extend({
 		events.pushObject(solomon);
 
 		return events;
-	}.property("story.@each.category", "veteran.@each.page"),
+	}.property(),
 	postWar: function(){
     	return this.get('stories').filterBy("category", "post-ww2");
-	}.property("story.@each.category"),
+	}.property(),
 });
 
 App.PostWarClimateRoute = Ember.Route.extend({
@@ -145,16 +145,16 @@ App.PostWarClimateRoute = Ember.Route.extend({
 App.SovietHistoryController = Ember.ObjectController.extend({
 	easternFront: function(){
     	return this.get('battles').filterBy("category", "eastern-front");
-	}.property("stories.@each.category"),
+	}.property(),
 	partisans: function(){
     	return this.get('stories').filterBy("category", "partisans");
-	}.property("stories.@each.category"),
+	}.property(),
 	leaders: function(){
     	return this.get('veterans').filterBy("leader", true);
-	}.property("veterans.@each.leader"),
+	}.property(),
 	forces: function(){
 		return this.get("stories").filterBy("category", "military-unit");
-	}.property("stories.@each.category"),
+	}.property(),
 });
 
 App.SovietHistoryRoute = Ember.Route.extend({
@@ -182,7 +182,7 @@ App.VeteransController = Ember.ArrayController.extend({
 			content: vets, sortProperties: ["lastName"]
 		});
 		return results
-	}.property("results.@each.leader"),
+	}.property(),
 });
 
 App.VeteransRoute = Ember.Route.extend({
