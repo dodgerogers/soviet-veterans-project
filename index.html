@@ -1,0 +1,354 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<meta http-equiv="Content-Style-Type" content="text/css">
+	<meta http-equiv="Content-Script-Type" content="text/javascript">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Soviet Jewish Veterans</title>
+	<meta name="description" content="The veterans project is a collection of interviews with Soviet Jews who fought on the Eastern Front in World War Two. Each video is accompanied by a short biography and links to historical information.">
+	<meta name="keywords" content="soviet jewish veterans, red book project, jewish war veterans, soviet war veterans, world war two veterans, ww2 jewish veterans, ww2 soviet jewish veterans, Soviet jewish war veterans, Russian jewish war veterans, Soviet Jewish soldiers, Soviet Jewish Aviators, Soviet Jews During World War 2, Jews in Russia World War 2, Russian Jews in the war, Soviet Jews fighting in the war, Jewish soldiers in World War 2, Soviet Jewish soldier interviews, Russian Jewish veteran interviews, Soviet Jewish veteran video interviews">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/custom.css" media="all" rel="stylesheet" type="text/css">
+	<link href="css/responsive.css" media="all" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<!-- COMPONENTS & PARTIALS -->
+	<script type="text/x-handlebars" data-template-name='components/soviet-navigation'>
+		<div class="navbar navbar-default main" role="navigation">
+			<div class="container-fluid">
+		    	<div class="nav nav-justified">
+					{{#link-to "index" classNames="navbar-brand"}}SOVIET JEWISH VETERANS{{/link-to}}
+		        </div>
+			</div>
+		</div>
+		<div class="navbar navbar-default" role="navigation">
+			<div class="container-fluid">
+		    	<div class="navbar-header">
+		        	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		            	<span class="sr-only">Toggle navigation</span>
+		              	<span class="icon-bar"></span>
+		              	<span class="icon-bar"></span>
+		              	<span class="icon-bar"></span>
+		            </button>
+		        </div>
+		        <div class="navbar-collapse collapse text-center">
+		            <ul class="nav navbar-nav">
+		              	{{partial "nav_links"}}
+		            </ul>
+		        </div>
+			</div>
+		</div>
+	</script>
+	
+	<script type="text/x-handlebars" data-template-name="_nav_links">
+		<li>{{#link-to "about"}}About{{/link-to}}</li>
+		<li>{{#link-to "post-war-climate"}}Post War Climate{{/link-to}}</li>
+		<li>{{#link-to "soviet-history"}}WWII Soviet History{{/link-to}}</li>
+    	<li>{{#link-to "veterans"}}Veterans{{/link-to}}</li>
+		<li>{{#link-to "medals"}}Medals{{/link-to}}</li>
+		<li>{{#link-to "battles"}}Battles{{/link-to}}</li>
+		<li>{{#link-to "films"}}Films Vs Reality{{/link-to}}</li>
+	</script>
+  			
+	<script type="text/x-handlebars" data-template-name="components/soviet-footer">
+		<footer id="footer">
+			<div class="container">
+				<p>To view all our supporting research, please visit our {{#link-to "references"}}fact checking references page{{/link-to}}.</p>
+				<p>&copy; 2013 Soviet Jewish Veterans Project. All rights reserved.
+				{{#link-to 'sitemap'}}Sitemap{{/link-to}}</p>
+			</div>	
+		</footer> 
+	</script>
+	
+	<script type="text/x-handlebars" data-template-name="components/soviet-links">
+		{{#if objects}}
+			<p><b>{{message}}</b>
+			{{#each obj in objects}}
+				<!--
+				{{#link-to obj.page ob}}
+					<img {{bind-attr src="obj.image"}} alt="name" />
+				{{/link-to}}-->	
+				{{#link-to obj.page obj}}{{obj.name}}{{/link-to}},&nbsp;
+			{{/each}}
+		{{/if}}	
+	</script>
+	
+	<!-- COLUMN LAYOUTS FOR DYNAMIC INFO PAGES -->
+	<script type="text/x-handlebars" data-template-name="components/multi-column">
+		<h2>{{title}}</h2><hr>
+		{{#each objects}}<!--
+			--><div class="{{unbound view.columns}} vcenter">
+				<div class="profile-info">
+					{{#link-to page this}}
+						<img {{bind-attr src="image" alt="name"}} />
+					{{/link-to}}	
+					{{#link-to page this}}	
+						<h4 class="name">{{name}}</h4>
+					{{/link-to}}
+					{{#if copyright}}
+						<p><i>{{copyright}}</i></p>
+					{{/if}}	
+				</div>
+			</div><!--
+		-->{{/each}}
+	</script>
+	
+	<!-- COPY PARTIALS -->
+	<script type="text/x-handlebars" data-template-name="_medal_copy">
+		<p>*115 out of the 1643 people made Heroes of the Soviet Union during World War 2 were Jewish. The second highest decorated ethnic group despite Stalin&#39;s decree not to award medals to Jews.</p>
+		<p>MedalsGuyHeadless
+		haaretz.com IMAGE</p>
+		<p>Many of the medals the veterans are wearing in their interviews are commemorative. There are "jubilee" medals celebrating the 20th, 30th, and 40th anniversary of the war, given to every Red Army and Partisan soldier still living at the time. Brezhnev created over 200 different anniversary medals, meaning some veterans have different medals for the 38th and 39th anniversary of a given battle.</p>
+	</script>
+	
+	<!-- LAYOUTS -->
+	<script type="text/x-handlebars" data-template-name="application">
+		<div id="wrap">
+			{{soviet-navigation}}
+			<div class="container margin-bottom" style="">
+				{{outlet}}
+			</div>
+			<div id="push"></div>
+		</div>
+		{{soviet-footer}}
+  	</script>
+	
+	<script type="text/x-handlebars" data-template-name="index">
+		<div class="row">
+			<div class="container">
+				<div class="col-md-12">
+					<h2>The Veterans</h2>
+					<h4 class="date">The Second World War Told By Jewish Red Army Veterans</h4>
+					<p>The veterans project is a collection of interviews with Soviet Jews who fought on the Eastern Front in World War Two. Each video is accompanied by a short biography and links to historical information. The site provides contextual information about Jewish life in The Soviet Union before and after the war, in addition to details about battles where the veterans participated. Individual eyewitness accounts combined with background knowledge illuminate this little known chapter of a well documented part of history. Writer: {{#link-to "veteran" 13}}Grigory Svirsky{{/link-to}}.</p>
+					<p>{{#link-to "veterans"}}View all Veterans{{/link-to}}</p>
+					{{multi-column objects=veterans columns="col-md-3 col-sm-3 col-xs-6"}}
+				</div>
+				<div class="col-md-12">
+					<h2>The Battles</h2>
+					<p>{{#link-to "battles"}}View all Battles{{/link-to}}</p>
+					{{multi-column objects=battles columns="col-md-3 col-sm-3 col-xs-6"}}
+				</div>		
+				<div class="col-md-12">
+					<h2>The Medals</h2>
+					<p>{{#link-to "medals"}}View all Medals{{/link-to}}</p>
+					{{multi-column objects=medals columns="col-md-3 col-sm-3 col-xs-6"}}
+				</div>
+				<div class="col-md-12">
+					{{multi-column objects=films title="Films Vs Reality" columns="col-md-3 col-sm-6 col-xs-6"}}
+				</div>
+			</div>
+		</div>
+	</script>
+	
+	<!-- VETERANS -->
+	<script type="text/x-handlebars" data-template-name="veterans">
+		<h1>Veretans</h1>
+		<p>The stories of Jewish Soviet veterans of the second world war. Click the links for videos and interviews.</p>
+		<div class="row">
+			{{multi-column objects=veterans columns="col-md-3 col-sm-6 col-xs-6"}}
+		</div>	
+	</script>
+	
+	<script type="text/x-handlebars" data-template-name="veteran">
+		<div class="profile-section">
+			<div class="profile-info">
+				<h1 class="name">{{name}}</h1>
+				<h4 class="date">{{date}}</h4>
+				{{soviet-links objects=medals message="Medals Awarded:"}}
+				<hr>
+				<b>{{info}}</b>
+				<div class="copy-url hide">{{copy}}</div>
+				<div class="attr columnizer"></div>
+			</div>
+		</div>
+	</script>
+	
+	<!-- MEDALS -->
+	<script type="text/x-handlebars" data-template-name="medals">
+		<h1>Medals</h1>
+		<p><i>photos courtesy wikipedia.org</i></p>
+		<div class="row">
+			{{multi-column objects=model columns="col-md-2 col-sm-3 col-xs-6"}}
+		</div>
+		<hr>
+		{{partial "medal_copy"}}
+	</script>
+	
+	<script type="text/x-handlebars" data-template-name="medal">
+		<div class="profile-section">
+		<div class="row">
+			<div class="col-md-2 col-sm-2 col-xs-2">
+				<img {{bind-attr src="image" alt="name"}} />
+			</div>
+			<div class="col-md-10 col-sm-10 col-xs-10">	
+				<div class="profile-info">
+					<h1 class="name">{{name}}</h1>
+					{{soviet-links objects=veterans message="Awarded to:"}}
+					{{soviet-links objects=battles message="Awarded at:"}}
+					<hr>
+					<p class="content">{{{copy}}}</p>
+					{{#if copyright}}
+						<i>Image courtesy of {{copyright}}</i>
+					{{/if}}
+				</div>
+			</div>	
+			</div>
+		</div>
+	</script>
+	
+	<!-- BATTLES -->
+	<script type="text/x-handlebars" data-template-name="battles">
+		<h1>Battles</h1>
+		<div class="row">
+			{{multi-column objects=model columns="col-md-3 col-sm-4 col-xs-6"}}
+		</div>
+	</script>
+	
+	<script type="text/x-handlebars" data-template-name="battle">
+		<div class="profile-section">
+			<div class="profile-info">
+				<h1 class="name">{{name}}</h1>
+				<h4 class="date">{{date}}</h4>
+				{{soviet-links objects=medals message="Medals:"}}
+				{{soviet-links objects=veterans message="Veterans who participated"}}
+				<hr>
+				<div class="copy-url hide">{{copy}}</div>
+				<div class="attr columnizer"></div>
+			</div>
+		</div>
+	</script>
+	
+	<!-- FILMS -->
+	<script type="text/x-handlebars" data-template-name="films">
+		<h1>Films Versus Reality</h1>
+		<div class="row">
+			{{multi-column objects=model columns="col-md-3 col-sm-6 col-xs-6"}}
+		</div>
+	</script>
+	
+	<script type="text/x-handlebars" data-template-name="film">
+		<div class="profile-section">
+			<div class="profile-info">
+				<h1 class="name">{{name}}</h1>
+				<hr>
+				<div class="copy-url hide">{{copy}}</div>
+				<div class="attr columnizer"></div>
+			</div>
+		</div>
+	</script>
+	
+	<!-- STORIES -->
+	<script type="text/x-handlebars" data-template-name="story">
+		<div class="profile-section">
+			<div class="profile-info">
+				<h1 class="name">{{name}}</h1>
+				<h4 class="date">{{date}}</h4>
+				<hr>
+				<div class="copy-url hide">{{copy}}</div>
+				<div class="attr columnizer"></div>
+			</div>
+		</div>
+	</script>
+	
+	<!-- POST WAR CLIMATE -->
+	<script type="text/x-handlebars" data-template-name="post-war-climate">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				{{multi-column objects=history title="Brief History Of Jews In Russia And The Soviet Union" columns="col-md-4 col-sm-4 col-xs-12"}}
+			</div>	
+		</div>
+		<div class="mini-push"></div>
+		<div class="row">
+			<div class="col-md-6 col-sm-12 col-xs-12">
+				{{multi-column objects=worldWar2 title="World War II Period" columns="col-md-6 col-sm-6 col-xs-12"}}
+			</div>		
+			<div class="col-md-6 col-sm-12 col-xs-12">
+				{{multi-column objects=postWar title="Stalin's War Against The Jews" columns="col-md-6 col-sm-6 col-xs-12"}}
+			</div>
+		</div>		
+	</script>
+	
+	<!-- SOVIET HISTORY -->
+	<script type="text/x-handlebars" data-template-name="soviet-history">
+		<div class="row">
+			<div class="col-md-12">
+				{{multi-column objects=easternFront title="The Eastern Front" columns="col-md-3 col-sm-3 col-xs-6"}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				{{multi-column objects=leaders title="War Time Leaders" columns="col-md-4 col-sm-4 col-xs-6"}}
+			</div>	
+		</div>
+		<div class="row">
+			<div class="col-md-8">
+				{{multi-column objects=forces title="Military Units" columns="col-md-6 col-sm-6 col-xs-6"}}
+			</div>	
+			<div class="col-md-4">
+				{{multi-column objects=partisans title="Partisans" columns="col-md-12 col-sm-12 col-xs-12"}}
+			</div>	
+		</div>
+	</script>
+	
+	<!-- SITEMAP -->
+	<script type="text/x-handlebars" data-template-name="sitemap">
+		<h1>Sitemap</h1>
+		<div class="row">
+			<div class="col-md-3 col-xs-6">
+				<h4>Veterans</h4><hr>
+				{{#each veterans}}
+					{{#link-to "veteran" this}}{{name}}{{/link-to}} : {{id}}<br>
+				{{/each}}
+			</div>
+			<div class="col-md-3 col-xs-6">
+				<h4>Medals</h4><hr>
+				{{#each medals}}
+					{{#link-to "medal" this}}{{name}}{{/link-to}} : {{id}}<br>
+				{{/each}}
+			</div>
+			<div class="col-md-3 col-xs-6">
+				<h4>Films</h4><hr>
+				{{#each films}}
+					{{#link-to "film" this}}{{name}}{{/link-to}} : {{id}}<br>
+				{{/each}}
+				<hr>
+				<h4>Stories</h4><hr>
+				{{#each stories}}
+					{{#link-to "story" this}}{{name}}{{/link-to}} : {{id}}<br>
+				{{/each}}
+			</div>
+			<div class="col-md-3 col-xs-6">
+				<h4>Battles</h4><hr>
+				{{#each battles}}
+					{{#link-to "battle" this}}{{name}}{{/link-to}} : {{id}}<br>
+				{{/each}}
+			</div>
+		</div>	
+	</script>
+	
+	<!-- STATIC PAGES -->
+	<script type="text/x-handlebars" data-template-name="about">
+		<h1>About us</h1>
+				<img src="images/copy/Fisherman2.jpg" class="floatImage"/>	
+				<p>The Red Book Project&#39;s goal is to preserve the memories of Soviet Jews who fought in The Red Army during World War Two. Like all ethnic groups in The Soviet Union, Jewish people answered when called to defend their country. The idea that Jews did not fight in the war is a myth. It began as part of an Anti-Semitic campaign in post war Soviet Russia that was more concerned with creating a national scapegoat than historical facts. In fact, Jewish people were the second highest decorated ethnic group in The Red Army, despite an order from Stalin that they were not to be given medals, except under extreme circumstances. The interviews on this site were conducted in Toronto and Montreal between 2010 and 2012, with Jewish Red Army veterans that eventually immigrated to Canada. These brave men and women were involved in a variety of roles throughout the eastern front and provide eyewitness accounts of events that shaped the modern world.</p>
+				<p>The Red Book Project is takes its name from a proposed initiative by The Jewish Anti Fascist Committee to record and preserve Jewish involvement in the fight against Nazism. The Committee was founded as a partnership between Jewish leaders and the Soviet government in 1942. After the war, its members were imprisoned or killed before the project could be completed. This collection of interviews serves as a memorial to the Jewish Red Army soldiers that gave their lives for The Soviet Union, those that survived and had their heroism tarnished by Anti-Semitism, and the JAC members who were killed trying to preserve the memory of Jewish involvement in The Second World War.</p>
+			
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="references">
+		<h2>Fact Checking References</h2>
+		<hr>
+		<div class="attr"></div>
+	</script>
+	
+	<!-- SCRIPTS -->	
+	<script src="js/libs/jquery-1.10.2.js"></script>
+	<script src="js/libs/handlebars-1.1.2.js"></script>
+	<script src="js/libs/ember-1.5.1.js"></script>
+	<script src="js/libs/ember-data.js"></script>
+	<script src="js/libs/bootstrap.min.js"></script>
+	<script src="js/libs/jquery.columnizer.js"></script>
+	<script src="js/app.js"></script>
+</body>
+</html>

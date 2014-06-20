@@ -1,0 +1,120 @@
+html, body {
+	height: 100%;
+	font-family: 'Source Sans Pro', sans-serif;
+	background: #FFFEFA;
+}
+#wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -71px;
+}
+#footer {
+	/*margin-top:20px;*/
+	background: #F9FAF2;
+	border-top: 1px solid #eee;
+	padding-top:10px;
+	text-align:center;
+}
+#push, #footer {
+	height: 71px;
+}
+.mini-push {
+	height:30px;
+}
+.margin-bottom {
+	margin-bottom: 40px;
+}
+
+/* Fonts */
+
+h1.name, h4.date {
+	margin-top:5px;
+}
+h4.date, .date {
+	color: #de0000;
+}
+
+/* Templates */
+
+.vcenter {
+	display: inline-block;
+	vertical-align: top;
+	float: none;
+	/* Rember to use <!-- --> to remove gals left by using inline-block */
+}
+.soviet-link img {
+	max-width:100px;
+}
+.profile-section {
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	padding: 30px;
+	border: 1px solid #eee;
+	background: #fff;
+}
+.profile-info .attr {
+	margin-top:10px;
+	-moz-column-count: 2;
+	-moz-column-gap: 20px;
+	-webkit-column-count: 2;
+	-webkit-column-gap: 20px;
+}
+/* This is for the dynamically added columns by columnizer */
+.first.column, .last.column {
+	padding-right: 20px;
+}
+.profile-info .attr img {
+	max-height: 100%;
+	max-width: 100%;
+}
+.video-container, .video-container iframe {
+	width:100%;
+}
+
+img.floatImage {
+	float: left;
+	margin:0px 10px 10px 0px;
+}
+/* Bootstrap overrides */
+
+div[class^="col-"] {
+	padding-right:10px;
+	padding-left:10px;
+}
+div[class^="col-"] img {
+	width:100%;
+}
+/* Nav */
+.navbar-default a.navbar-brand {
+	display: inline-block;
+	float: none;
+	text-shadow: 0px 2px 0px #000;
+	color: #fff;
+}
+.navbar-default a.navbar-brand.active {
+	background: #CA0606
+}
+.navbar-default .navbar-nav>li>a.active {
+	color: #000;
+	background:#eee;
+}
+.nav.navbar-nav {
+	display: inline-block;
+	float:none;
+}
+.navbar-default.main {
+	background-color: #de0000;
+	border-color: #de0000;
+	border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	margin-bottom: 0px;
+	text-align:center;
+}
+/* Overrides */
+.thumbnail {
+	background-color: #111;
+	padding:0px 4px;
+}

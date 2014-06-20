@@ -1,0 +1,26 @@
+@media (max-width: 767px) and (min-width: 480px) {
+	.profile-info .attr {
+		margin-top:10px;
+		-moz-column-count: 1;
+		-moz-column-gap: 20px;
+		-webkit-column-count: 1;
+		-webkit-column-gap: 20px;
+	}
+	img.floatImage {
+		float: none;
+		width: 100%;
+	}
+}
+@media (max-width: 480px) {
+	.profile-info .attr {
+		margin-top:10px;
+		-moz-column-count: 1;
+		-moz-column-gap: 20px;
+		-webkit-column-count: 1;
+		-webkit-column-gap: 20px;
+	}
+	img.floatImage {
+		float: none;
+		width: 100%;
+	}
+}
