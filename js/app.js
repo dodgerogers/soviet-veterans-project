@@ -857,21 +857,6 @@ App.Veteran.FIXTURES = [
 		copyright: "biography.com",
 	},
 	{
-		id: 51,
-		name: "Grinberg Sonovich",
-		medals: [102],
-	},
-	{
-		id: 52,
-		name: "Potievskiy Davidovich",
-		medals: [102],
-	},
-	{
-		id: 53,
-		name: "Feygin Losifovich",
-		medals: [118],
-	},
-	{
 		id: 54,
 		name: "Andrey Vlasov",
 		leader: true,
@@ -914,7 +899,7 @@ App.Medal.FIXTURES = [
 		name: "Order of the Red Star",
 		copy: "Awarded to Red Army personnel for exceptional service in defense of the Soviet Union in war or peace time.",
 		battles: [],
-		veterans: [15,18,8,35,51,9,4,40,19,38,12,36],
+		veterans: [15,18,8,35,9,4,40,19,38,12,36],
 	},
 	{
 		id: 103,
@@ -942,7 +927,7 @@ App.Medal.FIXTURES = [
 		name: "Medal for Battle Merit",
 		copy: "Awarded for combat action resulting in military success.",
 		battles: [],
-		veterans: [16,40,10,19,26,51,4,7],
+		veterans: [16,40,10,19,26,4,7],
 	},
 	{
 		id: 107,
@@ -1012,7 +997,7 @@ App.Medal.FIXTURES = [
 		name: "Medal For Liberation of Warsaw",
 		copy: "Awarded to all personnel who contributed to the capture of Warsaw.",
 		battles: [],
-		veterans: [23,11,52],
+		veterans: [23,11],
 	},
 	{
 		id: 117,
@@ -1026,7 +1011,7 @@ App.Medal.FIXTURES = [
 		name: "Medal For Victory over Vienna",
 		copy: "Awarded to all personel who contributed to the capture of Vienna. ",
 		battles: [],
-		veterans: [12,53,18,15],
+		veterans: [12,18,15],
 	},
 	{
 		id: 119,
