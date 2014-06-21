@@ -30,6 +30,7 @@ App.ApplicationController = Ember.Controller.extend({
 App.ApplicationAdapter = DS.FixtureAdapter.extend();
 
 DS.FixtureAdapter.reopen({
+	latency: 200,
     queryFixtures: function(records, query, type) {        
         return records.filter(function(record) {
             for(var key in query) {
@@ -75,7 +76,7 @@ App.IndexController = Ember.ObjectController.extend({
 		// We want to fetch 16 records but no "Leaders"
 		// Leaders occur near end of veterans, so we make sure the random number
 		// doesn't start when these records begin
-		var start = Math.floor(Math.random() * (this.get("veteran").get("length")-24) ) + 1;
+		var start = Math.floor(Math.random() * (this.get("veteran").get("length")-28) ) + 1;
 		var finish = start + 16;
 		
     	return this.get("veteran").slice(start,finish);
