@@ -279,6 +279,7 @@ App.FilmRoute = Ember.Route.extend({
 });
 
 //--------------------- STORIES ---------------------//
+
 App.StoryRoute = Ember.Route.extend({
 	model: function(params){
 		return this.store.find("story", params.story_id);
@@ -363,20 +364,23 @@ App.VeteranView = Ember.View.extend({
 		// Here we fetch the URL provided in the veteran model
 		// load this data, which represents the main copy
 		// of the particular vet into the attr div
-       	var url = $(".profile-info").find(".copy-url").text();
-		console.log("Rendering: " + url);
-		$.get(url, function(data) {
-			// First we'll load the data into the DOM
-			$(".profile-info .attr").html(data);
+		var profileDiv = $(".profile-info");
+       	var url = profileDiv.find(".copy-url").text();
+		if (url) {
+			console.log("Rendering: " + url);
+			$.get(url, function(data) {
+				// First we'll load the data into the DOM
+				profileDiv.find(".attr").html(data);
 			
-			// Now check if IE and browser width
-			var ua = window.navigator.userAgent;
-			var msie = ua.indexOf("MSIE ");
+				// Now check if IE and browser width
+				var ua = window.navigator.userAgent;
+				var msie = ua.indexOf("MSIE ");
 			
-			if ($(window).width() >= 767 && msie > 0) {
-				$('.profile-info .columnizer').columnize({ columns: 2 });
-			}
-		});
+				if ($(window).width() >= 767 && msie > 0) {
+					profileDiv.find('.columnizer').columnize({ columns: 2 });
+				}
+			});
+		}	
 	}
 });
 
@@ -1053,7 +1057,7 @@ App.Medal.FIXTURES = [
 		id: 125,
 		name: "Battle of Stalingrad",
 		copy: "Awarded to all personel who contributed to the Battle of Stalingrad.",
-		battles: [],
+		battles: [203],
 		veterans: [2],
 	},
 	{
@@ -1113,7 +1117,7 @@ App.Battle.FIXTURES = [
 		name: "Battle of Stalingrad",
 		date: "August 23 - February 2 1943",
 		medals: [109],
-		veterans: [15,12,9,2,723],
+		veterans: [15,12,9,2,7,23],
 		copyright: "Theoldphotoalbum.com",
 	},
 	{
