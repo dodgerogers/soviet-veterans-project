@@ -41,7 +41,7 @@ h4.date, .date {
 	display: inline-block;
 	vertical-align: top;
 	float: none;
-	/* Rember to use <!-- --> to remove gals left by using inline-block */
+	/* Rember to use <!-- --> to remove gaps left by using inline-block */
 }
 .soviet-link img {
 	max-width:100px;
@@ -71,6 +71,7 @@ h4.date, .date {
 }
 .video-container, .video-container iframe {
 	width:100%;
+	margin-bottom:5px;
 }
 
 img.floatImage {

@@ -364,25 +364,52 @@ App.VeteranView = Ember.View.extend({
 	}.observes("controller"),
 	
 	ajaxLoad: function(){
-		// Here we fetch the URL provided in the veteran model
-		// load this data, which represents the main copy
-		// of the particular vet into the attr div
+		// Here we fetch the URL provided in the veteran model in the copy-url div
+		// we'll load this into the page if it exists
+		
+		// First the variables
 		var profileDiv = $(".profile-info");
+		var attrDiv = profileDiv.find(".attr");
        	var url = profileDiv.find(".copy-url").text();
+		var loading = $("<div class='text-center'><h2><i class='fa fa-spinner fa-spin text-muted'></i></h2></div>");
+		
+		// Only proceed if we find the URL
 		if (url) {
+			// Clear the .attr div from old content
+			attrDiv.html("");
+			
+			// Insert loading div after this
+			loading.insertAfter( attrDiv );
+			
+			// Log what URL we are going to fetch
 			console.log("Rendering: " + url);
-			$.get(url, function(data) {
-				// First we'll load the data into the DOM
-				profileDiv.find(".attr").html(data);
 			
-				// Now check if IE and browser width
-				var ua = window.navigator.userAgent;
-				var msie = ua.indexOf("MSIE ");
-			
-				if ($(window).width() >= 767 && msie > 0) {
-					profileDiv.find('.columnizer').columnize({ columns: 2 });
-				}
-			});
+			setTimeout(function(){
+				$.ajax({
+		            url: url,
+		            type: 'GET',
+					timeout: 4000,
+		            success: function(data) {
+		                // First, hide the loading animation
+						loading.remove();
+
+						// Second, load the data into the DOM
+						attrDiv.html(data);
+
+						// Now check if IE and browser width
+						var ua = window.navigator.userAgent;
+						var msie = ua.indexOf("MSIE ");
+
+						if ($(window).width() >= 767 && msie > 0) {
+							profileDiv.find('.columnizer').columnize({ columns: 2 });
+						}
+		            },
+					error: function(){
+						loading.remove();
+						attrDiv.html("Something went wrong, please refresh the page and try again.");
+					}
+		        });
+			}, 300);
 		}	
 	}
 });
