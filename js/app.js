@@ -63,6 +63,7 @@ App.Router.map(function() {
 	this.resource("soviet-history");
 });
 
+
 // ------------------------------------------ SECTIONS & STATIC PAGES ------------------------------------------//
 
 //---------------- APPLICATION --------------------//
@@ -174,7 +175,7 @@ App.SovietHistoryRoute = Ember.Route.extend({
 //------------------- VETERANS -------------------//
 
 App.VeteransController = Ember.ArrayController.extend({
-	sortProperties: ["lastName"],
+	//sortProperties: ["lastName"],
 	sortAscending: true,
 	veterans: function() {
 		var vets = this.get("model").filterBy("leader", false);
@@ -257,7 +258,9 @@ App.BattleRoute = Ember.Route.extend({
 
 //--------------------- FILMS ---------------------//
 
-App.FilmsController = Ember.ArrayController.extend({});
+App.FilmsController = Ember.ArrayController.extend({
+	sortProperties: ['name']
+});
 
 App.FilmsRoute = Ember.Route.extend({
 	model: function(){

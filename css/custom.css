@@ -118,3 +118,17 @@ div[class^="col-"] img {
 	background-color: #111;
 	padding:0px 4px;
 }
+ /* alerts */
+.alert {
+	border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+}
+.alert-error {
+	background: #e95a4d;
+	color: #fff;
+	border: 0px solid #972219;
+}
+.alert-error a {
+	color: #111;
+}
