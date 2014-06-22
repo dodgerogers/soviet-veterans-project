@@ -518,3 +518,5 @@ App.Story = App.BasicRecord.extend({
 });
 
 // ------------------------------------------------- FIXTURES --------------------------------------------------//
+
+// Fixture data can now be found in js/models/MODELNAME.js

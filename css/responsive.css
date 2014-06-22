@@ -12,6 +12,9 @@
 	}
 }
 @media (max-width: 480px) {
+	#footer {
+		height: auto;
+	}
 	.profile-info .attr {
 		margin-top:10px;
 		-moz-column-count: 1;
