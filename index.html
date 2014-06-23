@@ -164,7 +164,7 @@
 	
 	<!-- VETERANS -->
 	<script type="text/x-handlebars" data-template-name="veterans">
-		<h1>Veretans</h1>
+		<h1>Veterans</h1>
 		<p>The stories of Jewish Soviet veterans of the second world war. Click the links for videos and interviews.</p>
 		<div class="row">
 			{{multi-column objects=veterans columns="col-md-3 col-sm-6 col-xs-6"}}
@@ -363,6 +363,13 @@
 		<div class="attr"></div>
 	</script>
 	
+	<script type="text/x-handlebars" data-template-name="fourOhFour">
+		<div class="text-center">
+			<h2>404 Page not found</h2>
+			<p>{{#link-to "index"}}Home <i class="fa fa-home"></i>{{/link-to}}
+		</div>	
+	</script>
+	
 	<!-- SCRIPTS -->	
 	<script src="js/libs/jquery-1.10.2.js"></script>
 	<script src="js/libs/handlebars-1.1.2.js"></script>
@@ -376,5 +383,6 @@
 	<script src="js/models/medal.js"></script>
 	<script src="js/models/story.js"></script>
 	<script src="js/models/battle.js"></script>
+	<script async src="js/libs/ga-tracking.js"></script>
 </body>
 </html>

@@ -61,6 +61,7 @@ App.Router.map(function() {
 	this.route("references");
 	this.resource("post-war-climate");
 	this.resource("soviet-history");
+	this.route("fourOhFour", { path: "*path"});
 });
 
 
@@ -332,17 +333,22 @@ App.SitemapRoute = Ember.Route.extend({
 
 App.AboutController = Ember.ObjectController.extend({});
 
+// Copy in template for about page
 App.AboutRoute = Ember.Route.extend({
 	activate: function() {
 		$(document).attr('title',  'About' + titleTag);
 	}
 });
 
+// References Page, copy in copy/page/references.html
 App.ReferencesRoute = Ember.Route.extend({
 	activate: function() {
 		$(document).attr('title',  'References' + titleTag);
 	}
 });
+
+// 404 Error page
+App.FourOhFourROute = Ember.Route.extend({});
 
 // -------------------------------------------- VIEWS & COMPONENTS ---------------------------------------------//
 
