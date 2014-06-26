@@ -61,6 +61,19 @@ h4.date, .date {
 	-webkit-column-count: 2;
 	-webkit-column-gap: 30px;
 }
+.profile-info .attr i {
+	-webkit-column-break-after:always;
+	-moz-column-break-after:always;
+	column-break-after:always;
+	-webkit-column-break-before:avoid;
+	-moz-column-break-before:avoid;
+	column-break-before:avoid;
+}
+img.main-img:hover {
+	box-shadow: 0px 1px 4px #000;
+	-webkit-box-shadow: 0px 1px 4px #000;
+	-moz-box-shadow: 0px 1px 4px #000;
+}
 /* This is for the dynamically added columns by columnizer */
 .first.column, .last.column {
 	padding-right: 20px;

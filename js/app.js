@@ -59,7 +59,7 @@ App.Router.map(function() {
 	this.route("about");
 	this.resource("sitemap");
 	this.route("references");
-	this.resource("post-war-climate");
+	this.resource("pre-and-post-war-climate");
 	this.resource("soviet-history");
 	this.route("fourOhFour", { path: "*path"});
 });
@@ -112,7 +112,7 @@ App.IndexRoute = Ember.Route.extend({
 
 //---------------- POST WAR CLIMATE ----------------//
 
-App.PostWarClimateController = Ember.ObjectController.extend({
+App.PreAndPostWarClimateController = Ember.ObjectController.extend({
 	history: function(){
     	return this.get('stories').filterBy("category", "jews-in-russia");
 	}.property(),
@@ -131,7 +131,7 @@ App.PostWarClimateController = Ember.ObjectController.extend({
 	}.property(),
 });
 
-App.PostWarClimateRoute = Ember.Route.extend({
+App.PreAndPostWarClimateRoute = Ember.Route.extend({
 	model: function(){
 		return Ember.RSVP.hash({
 			veteran: this.store.find("veteran", 55), // SOLOMON MIKHOELS
@@ -147,7 +147,14 @@ App.PostWarClimateRoute = Ember.Route.extend({
 
 App.SovietHistoryController = Ember.ObjectController.extend({
 	easternFront: function(){
-    	return this.get('battles').filterBy("category", "eastern-front");
+		var easternFront = [];
+		var purge = this.get("purge");
+		var battles = this.get('battles').filterBy("category", "eastern-front");
+		
+		easternFront.pushObject(purge);
+		easternFront.pushObjects(battles);
+
+		return easternFront;
 	}.property(),
 	partisans: function(){
     	return this.get('stories').filterBy("category", "partisans");
@@ -165,6 +172,7 @@ App.SovietHistoryRoute = Ember.Route.extend({
 		return Ember.RSVP.hash({
 			veterans: this.store.find("veteran"),
 			stories: this.store.find("story"),
+			purge: this.store.find("story", 413),
 			battles: this.store.find("battle"),
 		});
 	},
@@ -179,7 +187,7 @@ App.VeteransController = Ember.ArrayController.extend({
 	//sortProperties: ["lastName"],
 	sortAscending: true,
 	veterans: function() {
-		var vets = this.get("model").filterBy("leader", false);
+		var vets = this.get("model").filterBy("hide", false);
 		
 		results = Em.ArrayProxy.createWithMixins(Ember.SortableMixin, {
 			content: vets, sortProperties: ["lastName"]
@@ -442,7 +450,7 @@ App.BasicRecord = DS.Model.extend({
 	name: DS.attr("string"),
 	copyright: DS.attr("string"),
 	date: DS.attr("string"),
-	
+	hide: DS.attr("boolean", { defaultValue: false }),
 	// Dynamically set the page attribute to the model's className
 	// So we can use one template, send it multiple objects from different
 	// models and then link to them

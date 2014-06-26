@@ -45,7 +45,7 @@
 		</div>
 		<div class="navbar navbar-default" role="navigation">
 			<div class="container-fluid">
-		    	<div class="navbar-header">
+		    	<div class="navbar-header text-center">
 		        	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 		            	<span class="sr-only">Toggle navigation</span>
 		              	<span class="icon-bar"></span>
@@ -64,7 +64,7 @@
 	
 	<script type="text/x-handlebars" data-template-name="_nav_links">
 		<li>{{#link-to "about"}}About{{/link-to}}</li>
-		<li>{{#link-to "post-war-climate"}}Post War Climate{{/link-to}}</li>
+		<li>{{#link-to "pre-and-post-war-climate"}}Pre and Post War Climate{{/link-to}}</li>
 		<li>{{#link-to "soviet-history"}}WWII Soviet History{{/link-to}}</li>
     	<li>{{#link-to "veterans"}}Veterans{{/link-to}}</li>
 		<li>{{#link-to "medals"}}Medals{{/link-to}}</li>
@@ -102,7 +102,7 @@
 			--><div class="{{unbound view.columns}} vcenter">
 				<div class="profile-info">
 					{{#link-to page this}}
-						<img {{bind-attr src="image" alt="name"}} />
+						<img {{bind-attr src="image" alt="name"}} class="main-img" />
 					{{/link-to}}	
 					{{#link-to page this}}	
 						<h4 class="name">{{name}}</h4>
@@ -141,8 +141,7 @@
 				<div class="col-md-12">
 					<h2>The Veterans</h2>
 					<h4 class="date">The Second World War Told By Jewish Red Army Veterans</h4>
-					<p>The veterans project is a collection of interviews with Soviet Jews who fought on the Eastern Front in World War Two. Each video is accompanied by a short biography and links to historical information. The site provides contextual information about Jewish life in The Soviet Union before and after the war, in addition to details about battles where the veterans participated. Individual eyewitness accounts combined with background knowledge illuminate this little known chapter of a well documented part of history. Writer: {{#link-to "veteran" 13}}Grigory Svirsky{{/link-to}}.</p>
-					<p>{{#link-to "veterans"}}View all Veterans{{/link-to}}</p>
+					<p>The veterans project is a collection of interviews with Soviet Jews who fought on the Eastern Front in World War Two. Each video is accompanied by a short biography and links to historical information. The site provides contextual information about Jewish life in The Soviet Union before and after the war, in addition to details about battles where the veterans participated. Individual eyewitness accounts combined with background knowledge illuminate this little known chapter of a well documented part of history. 					<p>{{#link-to "veterans"}}View all Veterans{{/link-to}}</p>
 					{{multi-column objects=veterans columns="col-md-3 col-sm-3 col-xs-6"}}
 				</div>
 				<div class="col-md-12">
@@ -185,6 +184,7 @@
 		</div>
 	</script>
 	
+	
 	<!-- MEDALS -->
 	<script type="text/x-handlebars" data-template-name="medals">
 		<h1>Medals</h1>
@@ -218,6 +218,7 @@
 		</div>
 	</script>
 	
+	
 	<!-- BATTLES -->
 	<script type="text/x-handlebars" data-template-name="battles">
 		<h1>Battles</h1>
@@ -240,6 +241,7 @@
 		</div>
 	</script>
 	
+	
 	<!-- FILMS -->
 	<script type="text/x-handlebars" data-template-name="films">
 		<h1>Films Versus Reality</h1>
@@ -259,6 +261,7 @@
 		</div>
 	</script>
 	
+	
 	<!-- STORIES -->
 	<script type="text/x-handlebars" data-template-name="story">
 		<div class="profile-section">
@@ -272,8 +275,9 @@
 		</div>
 	</script>
 	
+	
 	<!-- POST WAR CLIMATE -->
-	<script type="text/x-handlebars" data-template-name="post-war-climate">
+	<script type="text/x-handlebars" data-template-name="pre-and-post-war-climate">
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				{{multi-column objects=history title="Brief History Of Jews In Russia And The Soviet Union" columns="col-md-4 col-sm-4 col-xs-12"}}
@@ -289,6 +293,7 @@
 			</div>
 		</div>		
 	</script>
+	
 	
 	<!-- SOVIET HISTORY -->
 	<script type="text/x-handlebars" data-template-name="soviet-history">
@@ -312,49 +317,54 @@
 		</div>
 	</script>
 	
+	
 	<!-- SITEMAP -->
 	<script type="text/x-handlebars" data-template-name="sitemap">
 		<h1>Sitemap</h1>
 		<div class="row">
-			<div class="col-md-3 col-xs-6">
-				<h4>Veterans</h4><hr>
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<hr><h4>Veterans</h4><hr>
 				{{#each veterans}}
 					{{#link-to "veteran" this}}{{name}}{{/link-to}} : {{id}}<br>
 				{{/each}}
 			</div>
-			<div class="col-md-3 col-xs-6">
-				<h4>Medals</h4><hr>
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<hr><h4>Medals</h4><hr>
 				{{#each medals}}
 					{{#link-to "medal" this}}{{name}}{{/link-to}} : {{id}}<br>
 				{{/each}}
 			</div>
-			<div class="col-md-3 col-xs-6">
-				<h4>Films</h4><hr>
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<hr><h4>Films</h4><hr>
 				{{#each films}}
 					{{#link-to "film" this}}{{name}}{{/link-to}} : {{id}}<br>
 				{{/each}}
-				<hr>
-				<h4>Stories</h4><hr>
+				<hr><h4>Stories</h4><hr>
 				{{#each stories}}
 					{{#link-to "story" this}}{{name}}{{/link-to}} : {{id}}<br>
 				{{/each}}
 			</div>
-			<div class="col-md-3 col-xs-6">
-				<h4>Battles</h4><hr>
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<hr><h4>Battles</h4><hr>
 				{{#each battles}}
 					{{#link-to "battle" this}}{{name}}{{/link-to}} : {{id}}<br>
 				{{/each}}
 			</div>
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<hr><h4>Historical Context</h4><hr>
+				{{#link-to "pre-and-post-war-climate"}}Pre and Post War Climate{{/link-to}}<br>
+				{{#link-to "soviet-history"}}WWII Soviet History{{/link-to}}<br>
+			</div>	
 		</div>	
 	</script>
+	
 	
 	<!-- STATIC PAGES -->
 	<script type="text/x-handlebars" data-template-name="about">
 		<h1>About us</h1>
-				<img src="images/copy/Fisherman2.jpg" class="floatImage"/>	
-				<p>The Red Book Project&#39;s goal is to preserve the memories of Soviet Jews who fought in The Red Army during World War Two. Like all ethnic groups in The Soviet Union, Jewish people answered when called to defend their country. The idea that Jews did not fight in the war is a myth. It began as part of an Anti-Semitic campaign in post war Soviet Russia that was more concerned with creating a national scapegoat than historical facts. In fact, Jewish people were the second highest decorated ethnic group in The Red Army, despite an order from Stalin that they were not to be given medals, except under extreme circumstances. The interviews on this site were conducted in Toronto and Montreal between 2010 and 2012, with Jewish Red Army veterans that eventually immigrated to Canada. These brave men and women were involved in a variety of roles throughout the eastern front and provide eyewitness accounts of events that shaped the modern world.</p>
-				<p>The Red Book Project is takes its name from a proposed initiative by The Jewish Anti Fascist Committee to record and preserve Jewish involvement in the fight against Nazism. The Committee was founded as a partnership between Jewish leaders and the Soviet government in 1942. After the war, its members were imprisoned or killed before the project could be completed. This collection of interviews serves as a memorial to the Jewish Red Army soldiers that gave their lives for The Soviet Union, those that survived and had their heroism tarnished by Anti-Semitism, and the JAC members who were killed trying to preserve the memory of Jewish involvement in The Second World War.</p>
-			
+		<img src="images/copy/Fisherman2.jpg" class="floatImage"/>	
+		<p>The Red Book Project&#39;s goal is to preserve the memories of Soviet Jews who fought in The Red Army during World War Two. Like all ethnic groups in The Soviet Union, Jewish people answered when called to defend their country. The idea that Jews did not fight in the war is a myth. It began as part of an Antisemitic campaign in post war Soviet Russia that was more concerned with creating a national scapegoat than historical facts. In fact, Jewish people were one of the highest decorated ethnic groups in The Red Army. The interviews on this site were conducted in Toronto and Montreal between 2010 and 2012, with Jewish Red Army veterans that eventually immigrated to Canada. These brave men and women were involved in a variety of roles throughout the eastern front and provide eyewitness accounts of events that shaped the modern world.</p>
+		<p>The Red Book Project is takes its name from a proposed initiative by The Jewish Anti Fascist Committee to record and preserve Jewish involvement in the fight against Nazism. The Committee was founded as a partnership between Jewish leaders and the Soviet government in 1942. After the war, its members were imprisoned or killed before the project could be completed. This collection of interviews serves as a memorial to the Jewish Red Army soldiers that gave their lives for The Soviet Union, those that survived and had their heroism tarnished by Anti-Semitism, and the JAC members who were killed trying to preserve the memory of Jewish involvement in The Second World War.</p>
 	</script>
 
 	<script type="text/x-handlebars" data-template-name="references">
@@ -365,9 +375,10 @@
 	
 	<script type="text/x-handlebars" data-template-name="fourOhFour">
 		<div class="text-center">
-			<h2>404 Page not found</h2>
-			<p>{{#link-to "index"}}Home <i class="fa fa-home"></i>{{/link-to}}
-		</div>	
+			<h2><b>404</b> We can&#39;t find what you&#39;re looking for.</h2>
+			<hr>
+			<p>{{#link-to "index" classNames="btn btn-default"}}Go to the homepage <i class="fa fa-home"></i>{{/link-to}}</p>
+		</div>
 	</script>
 	
 	<!-- SCRIPTS -->	
@@ -378,11 +389,7 @@
 	<script src="js/libs/bootstrap.min.js"></script>
 	<script src="js/libs/jquery.columnizer.js"></script>
 	<script src="js/app.js"></script>
-	<script src="js/models/veteran.js"></script>
-	<script src="js/models/film.js"></script>
-	<script src="js/models/medal.js"></script>
-	<script src="js/models/story.js"></script>
-	<script src="js/models/battle.js"></script>
+	<script src="js/models/fixtures.js"></script>
 	<script async src="js/libs/ga-tracking.js"></script>
 </body>
 </html>

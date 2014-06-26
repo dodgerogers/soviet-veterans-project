@@ -1,4 +1,11 @@
+@media (max-width: 991px) and (min-width: 767px) {
+	.navbar-nav>li>a { font-size: 11px; }
+}
 @media (max-width: 767px) and (min-width: 480px) {
+	.navbar-default .navbar-toggle {
+		float:none;
+		margin-right:0px;
+	}
 	.profile-info .attr {
 		margin-top:10px;
 		-moz-column-count: 1;
@@ -12,6 +19,10 @@
 	}
 }
 @media (max-width: 480px) {
+	.navbar-default .navbar-toggle {
+		float:none;
+		margin-right:0px;
+	}
 	#footer {
 		height: auto;
 	}
