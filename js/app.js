@@ -6,7 +6,6 @@ window.App = Ember.Application.create({
 // Global var for the title tag
 var titleTag = " | Soviet Jewish Veterans";
 
-
 // regex for cleaning up content
 // ((<span\b[^>]*\s\bstyle=(["'])([^"]*)\3[^>]*>))
 
@@ -59,9 +58,10 @@ App.Router.map(function() {
 	this.route("about");
 	this.resource("sitemap");
 	this.route("references");
-	this.resource("pre-and-post-war-climate");
+	this.resource("jews-in-russia-soviet-union");
 	this.resource("soviet-history");
 	this.route("fourOhFour", { path: "*path"});
+	this.route('acknowledgements');
 });
 
 
@@ -78,13 +78,13 @@ App.IndexController = Ember.ObjectController.extend({
 		// We want to fetch 16 records but no "Leaders"
 		// Leaders occur near end of veterans, so we make sure the random number
 		// doesn't start when these records begin
-		var start = Math.floor(Math.random() * (this.get("veteran").get("length")-28) ) + 1;
-		var finish = start + 16;
+		var start = Math.floor(Math.random() * (this.get("veteran").get("length")-32) ) + 1;
+		var finish = start + 20;
 		
     	return this.get("veteran").slice(start,finish);
 	}.property("veteran"),
 	medals: function(){
-    	return this.get('medal').slice(0,4);
+    	return this.get('medal').slice(0,6);
 	}.property(),
 	battles: function(){
     	return this.get('battle').slice(0,8);
@@ -112,7 +112,7 @@ App.IndexRoute = Ember.Route.extend({
 
 //---------------- POST WAR CLIMATE ----------------//
 
-App.PreAndPostWarClimateController = Ember.ObjectController.extend({
+App.JewsInRussiaSovietUnionController = Ember.ObjectController.extend({
 	history: function(){
     	return this.get('stories').filterBy("category", "jews-in-russia");
 	}.property(),
@@ -123,7 +123,7 @@ App.PreAndPostWarClimateController = Ember.ObjectController.extend({
 		
 		events.pushObjects(story);
 		events.pushObject(solomon);
-
+		
 		return events;
 	}.property(),
 	postWar: function(){
@@ -131,7 +131,7 @@ App.PreAndPostWarClimateController = Ember.ObjectController.extend({
 	}.property(),
 });
 
-App.PreAndPostWarClimateRoute = Ember.Route.extend({
+App.JewsInRussiaSovietUnionRoute = Ember.Route.extend({
 	model: function(){
 		return Ember.RSVP.hash({
 			veteran: this.store.find("veteran", 55), // SOLOMON MIKHOELS
@@ -184,7 +184,6 @@ App.SovietHistoryRoute = Ember.Route.extend({
 //------------------- VETERANS -------------------//
 
 App.VeteransController = Ember.ArrayController.extend({
-	//sortProperties: ["lastName"],
 	sortAscending: true,
 	veterans: function() {
 		var vets = this.get("model").filterBy("hide", false);
@@ -243,7 +242,14 @@ App.MedalRoute = Ember.Route.extend({
 //--------------------- BATTLES ---------------------//
 
 App.BattlesController = Ember.ArrayController.extend({
-	sortProperties: ['name']
+	sortAscending: true,
+	battles: function() {
+		var x = this.get("model").filterBy("hide", false);
+		results = Em.ArrayProxy.createWithMixins(Ember.SortableMixin, {
+			content: x, sortProperties: ["lastName"]
+		});
+		return results
+	}.property(),
 });
 
 App.BattlesRoute = Ember.Route.extend({
@@ -366,6 +372,23 @@ App.ApplicationView = Ember.View.extend({
 	didInsertElement: function(){
 		$(document).ready(function() {
 			$("#wrap").parent().css("height", "100%");
+			
+			// Click handlers for navigation elements
+			function navClickAnimate(div, number) {
+				$(div).on("click", function() {
+					setTimeout(function(){
+						$('html, body').animate({
+							scrollTop: $("h2:eq(" + number + ")").offset().top
+						}, 500);
+					}, 500);
+				});
+			};
+			
+			// Call the functions, numbers start with 0 as the first element
+			navClickAnimate("#leaders", 1);
+			navClickAnimate("#smersh-nkvd", 2);
+			navClickAnimate("#WWII-period", 1);
+			navClickAnimate("#post-war", 2);
 		});
 	}
 });
@@ -396,7 +419,7 @@ App.VeteranView = Ember.View.extend({
 			loading.insertAfter( attrDiv );
 			
 			// Log what URL we are going to fetch
-			console.log("Rendering: " + url);
+			//console.log("Rendering: " + url);
 			
 			setTimeout(function(){
 				$.ajax({
@@ -407,15 +430,21 @@ App.VeteranView = Ember.View.extend({
 		                // First, hide the loading animation
 						loading.remove();
 
-						// Second, load the data into the DOM
+						// Second, load the data into the content area
 						attrDiv.html(data);
 
 						// Now check if IE and browser width
 						var ua = window.navigator.userAgent;
 						var msie = ua.indexOf("MSIE ");
-
-						if ($(window).width() >= 767 && msie > 0) {
-							profileDiv.find('.columnizer').columnize({ columns: 2 });
+						
+						if (msie > 0) {
+							var width = $(window).width();
+							if (width >= 991) {
+								profileDiv.find('.columnizer').columnize({ columns: 3 });
+							}
+							else if (width >= 767 && width <= 991) {
+								profileDiv.find('.columnizer').columnize({ columns: 2 });
+							}
 						}
 		            },
 					error: function(){
@@ -441,6 +470,12 @@ App.ReferencesView = Ember.View.extend({
 		});
 	}
 });
+
+Ember.LinkView.reopen({
+  attributeBindings: ['data-toggle']
+});
+
+
 
 // --------------------------------------------- MODELS & FIXTURES ---------------------------------------------//
 
@@ -522,6 +557,10 @@ App.Battle = App.BasicRecord.extend({
 	category: DS.attr("string"),
 	medals: DS.hasMany("medal", { async: true } ),
 	veterans: DS.hasMany("veteran", { async: true }),
+	lastName: function() {
+		var fullName = this.get("name").split(" ");
+		return fullName[fullName.length-1];
+	}.property("name"),
 });
 
 App.Film = App.BasicRecord.extend({

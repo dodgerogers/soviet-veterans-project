@@ -5,9 +5,9 @@
 	<meta http-equiv="Content-Style-Type" content="text/css">
 	<meta http-equiv="Content-Script-Type" content="text/javascript">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Soviet Jewish Veterans Project</title>
-	<meta name="description" content="The veterans project is a collection of interviews with Soviet Jews who fought on the Eastern Front in World War Two. Each video is accompanied by a short biography and links to historical information.">
-	<meta name="keywords" content="soviet jewish veterans, red book project, jewish war veterans, soviet war veterans, world war two veterans, ww2 jewish veterans, ww2 soviet jewish veterans, Soviet jewish war veterans, Russian jewish war veterans, Soviet Jewish soldiers, Soviet Jewish Aviators, Soviet Jews During World War 2, Jews in Russia World War 2, Russian Jews in the war, Soviet Jews fighting in the war, Jewish soldiers in World War 2, Soviet Jewish soldier interviews, Russian Jewish veteran interviews, Soviet Jewish veteran video interviews">
+	<title>Soviet Jewish Veterans</title>
+	<meta name="description" content="This is a collection of interviews with Soviet Jews who fought on the Eastern Front in World War Two. Each video is accompanied by a short biography and links to historical information.">
+	<meta name="keywords" content="soviet jewish veterans,  jewish war veterans, soviet war veterans, world war two veterans, ww2 jewish veterans, ww2 soviet jewish veterans, Soviet jewish war veterans, Russian jewish war veterans, Soviet Jewish soldiers, Soviet Jewish Aviators, Soviet Jews During World War 2, Jews in Russia World War 2, Russian Jews in the war, Soviet Jews fighting in the war, Jewish soldiers in World War 2, Soviet Jewish soldier interviews, Russian Jewish veteran interviews, Soviet Jewish veteran video interviews">
 	<link rel="apple-touch-icon" sizes="57x57" href="images/favicons/apple-touch-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="images/favicons/apple-touch-icon-114x114.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="images/favicons/apple-touch-icon-72x72.png">
@@ -64,11 +64,46 @@
 	
 	<script type="text/x-handlebars" data-template-name="_nav_links">
 		<li>{{#link-to "about"}}About{{/link-to}}</li>
-		<li>{{#link-to "pre-and-post-war-climate"}}Pre and Post War Climate{{/link-to}}</li>
-		<li>{{#link-to "soviet-history"}}WWII Soviet History{{/link-to}}</li>
-    	<li>{{#link-to "veterans"}}Veterans{{/link-to}}</li>
+		<li>{{#link-to "veterans"}}Veterans{{/link-to}}</li>
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Jews in Russia/Soviet Union <span class="caret"></span></a>
+			<ul class="dropdown-menu" role="menu">
+				<li>{{#link-to "jews-in-russia-soviet-union"}}Jews in Russia/Soviet Union{{/link-to}}</li>
+				<li>{{#link-to "story" 400}}Tsarist Period{{/link-to}}</li>
+				<li>{{#link-to "story" 401}}Russian Revolution{{/link-to}}</li>
+				<li>{{#link-to "story" 402}}Soviet Union 1920&#39;s - 1930&#39;s{{/link-to}}</li>
+				<li>{{#link-to "jews-in-russia-soviet-union" id="WWII-period"}}World War II Period{{/link-to}}</li>
+				<li>{{#link-to "jews-in-russia-soviet-union" id="post-war"}}Post War 1945 - 1953{{/link-to}}</li>
+			</ul>
+		</li>
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">WWII Soviet History <span class="caret"></span></a>
+			<ul class="dropdown-menu" role="menu">
+				<li>{{#link-to "soviet-history"}}WWII Soviet History{{/link-to}}</li>
+				<li>{{#link-to "soviet-history"}}Eastern Front{{/link-to}}</li>
+				<li>{{#link-to "soviet-history" id="leaders"}}War Time Leaders{{/link-to}}</li>
+				<li>{{#link-to "soviet-history" id="smersh-nkvd"}}SMERSH and NKVD{{/link-to}}</li>
+				<li>{{#link-to "story" 410}}Partisans{{/link-to}}</li>
+			</ul>
+		</li>
+		
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">WWII Battles <span class="caret"></span></a>
+			<ul class="dropdown-menu" role="menu">
+				<li>{{#link-to "battles"}}WWII Battles{{/link-to}}</li>
+				<li>{{#link-to "battle" 202}}Berlin{{/link-to}}</li>
+				<li>{{#link-to "battle" 207}}Budapest{{/link-to}}</li>
+				<li>{{#link-to "battle" 204}}Konigsberg{{/link-to}}</li>
+				<li>{{#link-to "battle" 210}}Kursk{{/link-to}}</li>
+				<li>{{#link-to "battle" 200}}Leningrad{{/link-to}}</li>
+				<li>{{#link-to "battle" 201}}Moscow{{/link-to}}</li>
+				<li>{{#link-to "battle" 206}}Prague{{/link-to}}</li>
+				<li>{{#link-to "battle" 208}}Riga{{/link-to}}</li>
+				<li>{{#link-to "battle" 203}}Stalingrad{{/link-to}}</li>
+				<li>{{#link-to "battle" 205}}Vienna{{/link-to}}</li>
+			</ul>
+		</li>	
 		<li>{{#link-to "medals"}}Medals{{/link-to}}</li>
-		<li>{{#link-to "battles"}}Battles{{/link-to}}</li>
 		<li>{{#link-to "films"}}Films Vs Reality{{/link-to}}</li>
 	</script>
   			
@@ -76,8 +111,8 @@
 		<footer id="footer">
 			<div class="container">
 				<p>To view all our supporting research, please visit our {{#link-to "references"}}fact checking references page{{/link-to}}.</p>
-				<p>&copy; 2013 Soviet Jewish Veterans Project. All rights reserved.
-				{{#link-to 'sitemap'}}Sitemap{{/link-to}}</p>
+				<p>&copy; 2013 Soviet Jewish Veterans. All rights reserved. Contact Us at <a href="mailto:sovietveteransproject@gmail.com">sovietveteransproject@gmail.com</a> | 
+				{{#link-to 'sitemap'}}Sitemap{{/link-to}} <!-- | {{#link-to "acknowledgements"}}Acknowledgements{{/link-to}}--></p>
 			</div>	
 		</footer> 
 	</script>
@@ -139,10 +174,10 @@
 		<div class="row">
 			<div class="container">
 				<div class="col-md-12">
-					<h2>The Veterans</h2>
-					<h4 class="date">The Second World War Told By Jewish Red Army Veterans</h4>
-					<p>The veterans project is a collection of interviews with Soviet Jews who fought on the Eastern Front in World War Two. Each video is accompanied by a short biography and links to historical information. The site provides contextual information about Jewish life in The Soviet Union before and after the war, in addition to details about battles where the veterans participated. Individual eyewitness accounts combined with background knowledge illuminate this little known chapter of a well documented part of history. 					<p>{{#link-to "veterans"}}View all Veterans{{/link-to}}</p>
-					{{multi-column objects=veterans columns="col-md-3 col-sm-3 col-xs-6"}}
+					<h2>The Second World War Told By Jewish Red Army Veterans</h2>
+					<h4 class="date"></h4>
+ 					<p>This website’s goal is to preserve the memories of Soviet Jews who fought in The Red Army during The Second World War.  Interviews with veterans are displayed alongside a short biography and links to historical information about World War II.  The site also provides contextual notes about life in the Soviet Union leading up to and immediately following the war.  The combination of eye witness accounts and background information are aimed to create awareness and understanding of an often neglected part of Jewish history. These videos are an authentic oral history of The Second World War, a chance to view world shaping events through the  eyes of someone who experienced them firsthand. 					<p>{{#link-to "veterans"}}View all Veterans{{/link-to}}</p>
+					<h1>Veterans</h1>{{multi-column objects=veterans columns="col-md-3 col-sm-3 col-xs-6"}}
 				</div>
 				<div class="col-md-12">
 					<h2>The Battles</h2>
@@ -152,10 +187,7 @@
 				<div class="col-md-12">
 					<h2>The Medals</h2>
 					<p>{{#link-to "medals"}}View all Medals{{/link-to}}</p>
-					{{multi-column objects=medals columns="col-md-3 col-sm-3 col-xs-6"}}
-				</div>
-				<div class="col-md-12">
-					{{multi-column objects=films title="Films Vs Reality" columns="col-md-3 col-sm-6 col-xs-6"}}
+					{{multi-column objects=medals columns="col-md-2 col-sm-2 col-xs-6"}}
 				</div>
 			</div>
 		</div>
@@ -184,7 +216,6 @@
 		</div>
 	</script>
 	
-	
 	<!-- MEDALS -->
 	<script type="text/x-handlebars" data-template-name="medals">
 		<h1>Medals</h1>
@@ -199,10 +230,10 @@
 	<script type="text/x-handlebars" data-template-name="medal">
 		<div class="profile-section">
 		<div class="row">
-			<div class="col-md-2 col-sm-2 col-xs-2">
+			<div class="col-md-3 col-sm-3 col-xs-2">
 				<img {{bind-attr src="image" alt="name"}} />
 			</div>
-			<div class="col-md-10 col-sm-10 col-xs-10">	
+			<div class="col-md-9 col-sm-9 col-xs-10">	
 				<div class="profile-info">
 					<h1 class="name">{{name}}</h1>
 					{{soviet-links objects=veterans message="Awarded to:"}}
@@ -218,12 +249,11 @@
 		</div>
 	</script>
 	
-	
 	<!-- BATTLES -->
 	<script type="text/x-handlebars" data-template-name="battles">
-		<h1>Battles</h1>
+		<h1>World War II Battles</h1>
 		<div class="row">
-			{{multi-column objects=model columns="col-md-3 col-sm-4 col-xs-6"}}
+			{{multi-column objects=battles columns="col-md-3 col-sm-4 col-xs-6"}}
 		</div>
 	</script>
 	
@@ -240,7 +270,6 @@
 			</div>
 		</div>
 	</script>
-	
 	
 	<!-- FILMS -->
 	<script type="text/x-handlebars" data-template-name="films">
@@ -261,7 +290,6 @@
 		</div>
 	</script>
 	
-	
 	<!-- STORIES -->
 	<script type="text/x-handlebars" data-template-name="story">
 		<div class="profile-section">
@@ -275,25 +303,28 @@
 		</div>
 	</script>
 	
-	
 	<!-- POST WAR CLIMATE -->
-	<script type="text/x-handlebars" data-template-name="pre-and-post-war-climate">
+	<script type="text/x-handlebars" data-template-name="jews-in-russia-soviet-union">
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				{{multi-column objects=history title="Brief History Of Jews In Russia And The Soviet Union" columns="col-md-4 col-sm-4 col-xs-12"}}
 			</div>	
 		</div>
+		
 		<div class="mini-push"></div>
+		
 		<div class="row">
-			<div class="col-md-6 col-sm-12 col-xs-12">
-				{{multi-column objects=worldWar2 title="World War II Period" columns="col-md-6 col-sm-6 col-xs-12"}}
-			</div>		
-			<div class="col-md-6 col-sm-12 col-xs-12">
-				{{multi-column objects=postWar title="Stalin's War Against The Jews" columns="col-md-6 col-sm-6 col-xs-12"}}
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				{{multi-column objects=worldWar2 title="World War II Period" columns="col-md-4 col-sm-4 col-xs-12"}}
+			</div>	
+		</div>
+		
+		<div class="row"	
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				{{multi-column objects=postWar title="Post War 1945 - 1953" columns="col-md-4 col-sm-4 col-xs-12"}}
 			</div>
 		</div>		
 	</script>
-	
 	
 	<!-- SOVIET HISTORY -->
 	<script type="text/x-handlebars" data-template-name="soviet-history">
@@ -316,7 +347,6 @@
 			</div>	
 		</div>
 	</script>
-	
 	
 	<!-- SITEMAP -->
 	<script type="text/x-handlebars" data-template-name="sitemap">
@@ -352,19 +382,34 @@
 			</div>
 			<div class="col-md-3 col-sm-6 col-xs-12">
 				<hr><h4>Historical Context</h4><hr>
-				{{#link-to "pre-and-post-war-climate"}}Pre and Post War Climate{{/link-to}}<br>
+				{{#link-to "jews-in-russia-soviet-union"}}Pre and Post War Climate{{/link-to}}<br>
 				{{#link-to "soviet-history"}}WWII Soviet History{{/link-to}}<br>
 			</div>	
 		</div>	
 	</script>
 	
+	<script type="text/x-handlebars" data-template-name="acknowledgements">
+		<!-- Insert Copy here -->
+	</script>
 	
 	<!-- STATIC PAGES -->
 	<script type="text/x-handlebars" data-template-name="about">
-		<h1>About us</h1>
-		<img src="images/copy/Fisherman2.jpg" class="floatImage"/>	
-		<p>The Red Book Project&#39;s goal is to preserve the memories of Soviet Jews who fought in The Red Army during World War Two. Like all ethnic groups in The Soviet Union, Jewish people answered when called to defend their country. The idea that Jews did not fight in the war is a myth. It began as part of an Antisemitic campaign in post war Soviet Russia that was more concerned with creating a national scapegoat than historical facts. In fact, Jewish people were one of the highest decorated ethnic groups in The Red Army. The interviews on this site were conducted in Toronto and Montreal between 2010 and 2012, with Jewish Red Army veterans that eventually immigrated to Canada. These brave men and women were involved in a variety of roles throughout the eastern front and provide eyewitness accounts of events that shaped the modern world.</p>
-		<p>The Red Book Project is takes its name from a proposed initiative by The Jewish Anti Fascist Committee to record and preserve Jewish involvement in the fight against Nazism. The Committee was founded as a partnership between Jewish leaders and the Soviet government in 1942. After the war, its members were imprisoned or killed before the project could be completed. This collection of interviews serves as a memorial to the Jewish Red Army soldiers that gave their lives for The Soviet Union, those that survived and had their heroism tarnished by Anti-Semitism, and the JAC members who were killed trying to preserve the memory of Jewish involvement in The Second World War.</p>
+		<h1>About</h1><hr>
+		<div class="row">		
+			<div class="col-md-4 col-sm-4 col-xs-12">
+				<img src="images/copy/frumkin_sappers.jpg" class="floatImage"/>
+			</div>	
+			<div class="col-md-4 col-sm-4 col-xs-12">
+				<img src="images/copy/david_fisherman2.jpg" class="floatImage"/>
+			</div>
+			<div class="col-md-4 col-sm-4 col-xs-12">
+				<img src="images/copy/feygin_trapped.jpg" class="floatImage"/>
+			</div>
+		</div>
+		<hr>
+				<p>Jewish people were one of the highest decorated ethnic groups in The Red Army during World War II. These brave men and women were involved in a variety of roles throughout the Eastern Front and provide firsthand accounts of events that shaped the modern world. The website is inspired by <a href="http://sovietjewishveterans.com/index.html#/stories/403"> The Jewish Anti Fascist Committee’s (JAC)</a> proposed Red Book Project, which was created to document Jewish Soviet citizens&#39; contributions to the war effort. We collected video interviews with Jewish Red Army veterans who later immigrated to Canada and provided relevant historical information. All interviews were conducted in Toronto and Montreal between 2010 and 2012. Experts in the field have <a href="http://www.sovietjewishveterans.com/#/references">verified</a> historical notes detailing Soviet wartime <a href="http://sovietjewishveterans.com/index.html#/soviet-history"> leadership</a>, major <a href="http://sovietjewishveterans.com/index.html#/battles"> battles</a> where the veterans participated, the significance of their <a href="http://sovietjewishveterans.com/index.html#/medals"> medals</a>, and an overview of the <a href="http://sovietjewishveterans.com/index.html#/pre-and-post-war-climate"> Jewish experience </a> in in Soviet/Russian society before and after the war.  The information includes a history of The Jewish Anti Fascist Committee <a href="http://sovietjewishveterans.com/index.html#/stories/403">(JAC)</a> and a biography of its Chairman <a href="http://sovietjewishveterans.com/index.html#/veterans/55">Solomon Mikhoels</a>.  They explain how Mikhoels and JAC raised over ten million dollars for the war against Germany in the largest pro-Soviet rally on America soil.  They also detail how Stalin turned on the JAC after the war, <a href="http://sovietjewishveterans.com/index.html#/stories/404">executing</a> most of its members and justifying his actions with an antisemitic conspiracy known as <a href="http://sovietjewishveterans.com/index.html#/stories/405">The Doctor’s Plot</a>.  The information is meant to draw attention to an neglected aspect of Jewish history. Together the videos and articles honour Jewish soldiers’ sacrifice by making their story available and accessible for future generations.</p>
+	<p>Contact us for full transcripts of the interviews</p>			
+			
 	</script>
 
 	<script type="text/x-handlebars" data-template-name="references">
@@ -375,9 +420,9 @@
 	
 	<script type="text/x-handlebars" data-template-name="fourOhFour">
 		<div class="text-center">
-			<h2><b>404</b> We can&#39;t find what you&#39;re looking for.</h2>
+			<h2><b>404</b> We can't find what you're looking for.</h2>
 			<hr>
-			<p>{{#link-to "index" classNames="btn btn-default"}}Go to the homepage <i class="fa fa-home"></i>{{/link-to}}</p>
+			<p><a class='btn btn-default' href="/index.html#/">Go to the homepage <i class="fa fa-home"></i></a></p>
 		</div>
 	</script>
 	
@@ -389,7 +434,7 @@
 	<script src="js/libs/bootstrap.min.js"></script>
 	<script src="js/libs/jquery.columnizer.js"></script>
 	<script src="js/app.js"></script>
-	<script src="js/models/fixtures.js"></script>
+	<script src="js/fixtures.js"></script>
 	<script async src="js/libs/ga-tracking.js"></script>
 </body>
 </html>

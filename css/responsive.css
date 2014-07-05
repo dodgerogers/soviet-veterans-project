@@ -1,13 +1,27 @@
 @media (max-width: 991px) and (min-width: 767px) {
 	.navbar-nav>li>a { font-size: 11px; }
+	.profile-info .attr {
+		-moz-column-count: 2;
+		-moz-column-gap: 30px;
+		-webkit-column-count: 2;
+		-webkit-column-gap: 30px;
+	}
 }
 @media (max-width: 767px) and (min-width: 480px) {
 	.navbar-default .navbar-toggle {
 		float:none;
 		margin-right:0px;
 	}
+	.navbar-nav>li>.dropdown-menu {
+		text-align:center;
+	}
+	.navbar-nav .open .dropdown-menu {
+		background: #eee;
+	}
+	.nav.navbar-nav {
+		width: 100%;
+	}
 	.profile-info .attr {
-		margin-top:10px;
 		-moz-column-count: 1;
 		-moz-column-gap: 20px;
 		-webkit-column-count: 1;
@@ -22,6 +36,12 @@
 	.navbar-default .navbar-toggle {
 		float:none;
 		margin-right:0px;
+	}
+	.navbar-nav .open .dropdown-menu {
+		background: #eee;
+	}
+	.nav.navbar-nav {
+		width: 100%;
 	}
 	#footer {
 		height: auto;
